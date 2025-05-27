@@ -1,0 +1,216 @@
+# RTI API Examples
+
+## Master API Endpoints
+
+# Insert State
+curl -X POST http://localhost:3000/api/master/state \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "Maharashtra"}'
+
+# Insert District
+curl -X POST http://localhost:3000/api/master/district \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "Mumbai", "state_id": 1}'
+
+# Get Districts by State ID
+curl -X GET http://localhost:3000/api/master/district/state/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert Department
+curl -X POST http://localhost:3000/api/master/department \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "Information Technology", "state_id": 1}'
+
+# Get Departments by State ID
+curl -X GET http://localhost:3000/api/master/department/state/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert Appellate Authority
+curl -X POST http://localhost:3000/api/master/appellate-authority \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "IT Appellate Authority", "department_id": 1}'
+
+# Get Appellate Authorities by Department ID
+curl -X GET http://localhost:3000/api/master/appellate-authority/department/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert SPIO
+curl -X POST http://localhost:3000/api/master/spio \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "IT SPIO", "department_id": 1}'
+
+# Get SPIOs by Department ID
+curl -X GET http://localhost:3000/api/master/spio/department/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert RTI Reason Category
+curl -X POST http://localhost:3000/api/master/rti-reason-category \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "General Information", "department_id": 1}'
+
+# Get RTI Reason Categories by Department ID
+curl -X GET http://localhost:3000/api/master/rti-reason-category/department/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert Application Type
+curl -X POST http://localhost:3000/api/master/application-type \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"type_name": "Regular"}'
+
+# Insert Application Through
+curl -X POST http://localhost:3000/api/master/application-through \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"through_name": "Online"}'
+
+# Insert Fees Category
+curl -X POST http://localhost:3000/api/master/fees-category \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"category_name": "General"}'
+
+# Insert Police Station
+curl -X POST http://localhost:3000/api/master/police-station \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "Central Police Station", "district_id": 1}'
+
+# Get Police Stations by District ID
+curl -X GET http://localhost:3000/api/master/police-station/district/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert Post Office
+curl -X POST http://localhost:3000/api/master/post-office \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "Main Post Office", "district_id": 1}'
+
+# Get Post Offices by District ID
+curl -X GET http://localhost:3000/api/master/post-office/district/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Insert Municipality
+curl -X POST http://localhost:3000/api/master/municipality \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name": "Central Municipality", "district_id": 1}'
+
+# Get Municipalities by District ID
+curl -X GET http://localhost:3000/api/master/municipality/district/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+## Application API Endpoints
+
+# Insert Application Info
+curl -X POST http://localhost:3000/api/application/info \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "application_no": "RTI-2023-001",
+    "application_date": "2023-09-01",
+    "application_receive_date": "2023-09-05",
+    "application_file": "path/to/file.pdf",
+    "wakalat_nama_receive": true,
+    "application_type_id": 1,
+    "application_through_id": 1,
+    "meeting_status": false,
+    "disposed": false,
+    "rejected": false,
+    "answer_draft": "Draft response to the application",
+    "user_id": 1,
+    "disposed_date": null,
+    "acknowledge_memo": "Acknowledgment memo details",
+    "acknowledge_date": "2023-09-06"
+  }'
+
+# Insert Application Fees
+curl -X POST http://localhost:3000/api/application/fees \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "bpl": false,
+    "bpl_file": null,
+    "fees_receive": true,
+    "fees_type_id": 1,
+    "total_fees": 100.00,
+    "return": false,
+    "fees_not_receive_reason": null,
+    "application_id": 1,
+    "additional_fees": 0.00
+  }'
+
+# Insert Application Fees Details
+curl -X POST http://localhost:3000/api/application/fees-details \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "fees_count": 1,
+    "fees_number": "RTI-FEES-001",
+    "fees_date": "2023-09-05",
+    "fees_value": 100.00,
+    "application_fees_id": 1
+  }'
+
+## Applicant API Endpoints
+
+# Insert Applicant Address
+curl -X POST http://localhost:3000/api/applicant/address \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "applicant_name": "John Doe",
+    "client_name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone_no": "9876543210",
+    "gender": "Male",
+    "nationality": "Indian",
+    "identity_proof_receive": true,
+    "identity_no": "ABCDE1234F",
+    "identity_file": "path/to/identity.pdf",
+    "area": "Downtown",
+    "address": "123 Main Street",
+    "client_address": "123 Main Street",
+    "village": null,
+    "town": "Mumbai",
+    "block": "A",
+    "municipality_id": 1,
+    "ward_no": "10",
+    "panchayat": null,
+    "state_id": 1,
+    "district_id": 1,
+    "police_station_id": 1,
+    "post_office_id": 1,
+    "pincode": "400001",
+    "application_id": 1
+  }'
+
+# Insert Applicant Query
+curl -X POST http://localhost:3000/api/applicant/query \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "query": "Request for information about government schemes",
+    "rti_reason_id": 1,
+    "application_id": 1,
+    "answer_receive": null
+  }'
+
+## Log API Endpoints
+
+# Get Error Logs by Date Range
+curl -X GET "http://localhost:3000/api/logs/errors?startDate=2023-09-01&endDate=2023-09-30&limit=50&offset=0" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Get Request Logs by Date Range
+curl -X GET "http://localhost:3000/api/logs/requests?startDate=2023-09-01&endDate=2023-09-30&limit=50&offset=0" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+
+# Health Check
+curl -X GET http://localhost:3000/health

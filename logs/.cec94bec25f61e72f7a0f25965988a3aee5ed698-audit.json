@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 14
+    },
+    "auditLog": "/Users/indranilsarmacharya/Documents/work/RTIapi_v1/logs/.cec94bec25f61e72f7a0f25965988a3aee5ed698-audit.json",
+    "files": [
+        {
+            "date": 1748321403570,
+            "name": "/Users/indranilsarmacharya/Documents/work/RTIapi_v1/logs/error-2025-05-27.log",
+            "hash": "9ef152c652d541fad3712eb81f1d1a283eaa75f848a1eeb842c6c703a787be89"
+        }
+    ],
+    "hashType": "sha256"
+}

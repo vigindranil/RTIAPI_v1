@@ -9,6 +9,7 @@ router.use(verifyToken);
 
 // State routes
 router.post('/state', masterController.insertState);
+router.get('/state', masterController.getStates);
 
 // District routes
 router.post('/district', masterController.insertDistrict);

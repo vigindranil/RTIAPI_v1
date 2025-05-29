@@ -109,7 +109,7 @@ curl -X GET http://localhost:3000/api/master/municipality/district/1 \
 ## Application API Endpoints
 
 # Insert Application Info
-curl -X POST http://localhost:3000/api/application/info \
+curl -X POST http://localhost:3000/api/applicant/info \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -131,7 +131,7 @@ curl -X POST http://localhost:3000/api/application/info \
   }'
 
 # Insert Application Fees
-curl -X POST http://localhost:3000/api/application/fees \
+curl -X POST http://localhost:3000/api/applicant/fees \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -147,7 +147,7 @@ curl -X POST http://localhost:3000/api/application/fees \
   }'
 
 # Insert Application Fees Details
-curl -X POST http://localhost:3000/api/application/fees-details \
+curl -X POST http://localhost:3000/api/applicant/fees-details \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -156,12 +156,12 @@ curl -X POST http://localhost:3000/api/application/fees-details \
     "fees_date": "2023-09-05",
     "fees_value": 100.00,
     "application_fees_id": 1
-  }'
+  }' // pending
 
 ## Applicant API Endpoints
 
 # Insert Applicant Address
-curl -X POST http://localhost:3000/api/applicant/address \
+curl -X POST http://localhost:3000/api/application/address \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -192,7 +192,7 @@ curl -X POST http://localhost:3000/api/applicant/address \
   }'
 
 # Insert Applicant Query
-curl -X POST http://localhost:3000/api/applicant/query \
+curl -X POST http://localhost:3000/api/application/query \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{

@@ -25,6 +25,19 @@ const insertState = async (req, res, next) => {
   }
 };
 
+const getStates = async (req, res, next) => {
+  try {
+    const states = await masterModel.getStates();
+    res.status(200).json({
+      status: 'success',
+      data: states
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 // District Controllers
 const insertDistrict = async (req, res, next) => {
   try {
@@ -468,6 +481,7 @@ const getPostOfficesByDistrict = async (req, res, next) => {
 module.exports = {
   // State
   insertState,
+  getStates,
   
   // District
   insertDistrict,

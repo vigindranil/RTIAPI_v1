@@ -11,6 +11,16 @@ const insertState = async (name) => {
   }
 };
 
+
+const getStates = async () => {
+  try {
+    return await db.callProcedure('get_states');
+  } catch (error) {
+    logger.error('Error in getStates:', error);
+    throw error;
+  }
+}
+
 // District operations
 const insertDistrict = async (name, stateId) => {
   try {
@@ -196,44 +206,45 @@ const getMunicipalitiesByDistrict = async (districtId) => {
 module.exports = {
   // State
   insertState,
+  getStates,
   
   // District
   insertDistrict,
   getDistrictsByState,
-  
+
   // Department
   insertDepartment,
   getDepartmentsByState,
-  
+
   // Appellate Authority
   insertAppellateAuthority,
   getAppellateAuthoritiesByDepartment,
-  
+
   // SPIO
   insertSpio,
   getSpiosByDepartment,
-  
+
   // RTI Reason Category
   insertRtiReasonCategory,
   getRtiReasonCategoriesByDepartment,
-  
+
   // Application Type
   insertApplicationType,
-  
+
   // Application Through
   insertApplicationThrough,
-  
+
   // Fees Category
   insertFeesCategory,
-  
+
   // Police Station
   insertPoliceStation,
   getPoliceStationsByDistrict,
-  
+
   // Post Office
   insertPostOffice,
   getPostOfficesByDistrict,
-  
+
   // Municipality
   insertMunicipality,
   getMunicipalitiesByDistrict
